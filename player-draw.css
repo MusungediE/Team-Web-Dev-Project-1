@@ -1,0 +1,277 @@
+body{
+    background-image: url("game-background.jpg");
+}
+#container{
+    height: 675px;  
+    text-align: center;
+}
+
+/*Content 1 will deal with the oppenents side of cards */
+#content1{
+    height: 300px;
+    /*Grid Layout for each card positioning */
+
+    display: grid;   
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    color: red;   /*Makes the text red */
+    text-align: right;
+    
+    
+
+/*Content 2 is strictly you, player 1. */ 
+}
+#content2{
+    height: 325px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-columns: 1fr 1fr auto 1fr;
+
+    
+}
+
+/*Card 1 positioning */
+
+#card1{
+    margin-left: 60px; 
+    width: 80px;
+    height: 50px;
+    position: relative;
+    grid-column: 4 / 4;
+    grid-row: 2;
+    margin-bottom: 100px;
+    transform-style: preserve-3d;
+    transition: all 1s ease;   /*Transition for front and back of card */
+  }
+
+  /*Part of the transition of card 1. Rotation of cards */
+  #card1:hover {
+    transform: rotateY(180deg);  
+  }
+
+  /*Card 2 positioning */
+  #card2{
+    width: 80px;
+    margin-right: 100px;  /*Creating space from the right card */
+    height: 50px;
+    position: relative;
+    grid-column: 3 / 4;
+    grid-row: 2;
+    margin-bottom: 100px;
+    transform-style: preserve-3d;
+    transition: all 1s ease;    /*Transition for front and back of card */
+  }
+
+ /*Part of the transition of card 2. Rotation of cards */
+
+  #card2:hover {
+    transform: rotateY(180deg);
+  }
+
+   /*Card 3 positioning */
+   #card3{
+    width: 80px;
+    margin-left: 60px;  /*Creating space from the left card */
+    height: 50px;
+    position: relative;
+    grid-column: 2 / 4;
+    grid-row: 2;
+    margin-bottom: 100px;
+    transform-style: preserve-3d;
+    transition: all 1s ease;      /*Transition for front and back of card */
+  }
+
+  /*Part of the transition of card 3. Rotation of cards */
+
+  #card3:hover {
+    transform: rotateY(180deg);
+  }
+
+     /*Card 4 positioning */
+    #card4{
+      width: 80px;
+      margin-left: 100px;  /*Creating space from the left side*/
+      height: 50px;
+      position: relative;
+      grid-column: 1 / 4;
+      grid-row: 2;
+      margin-bottom: 100px;
+      transform-style: preserve-3d;
+      transition: all 1s ease;   /*Transition for front and back of card */
+    }
+
+
+
+    /*Part of the transition of card 4. Rotation of cards */
+    
+    #card4:hover {
+      transform: rotateY(180deg);
+    }
+
+    #drawing-card{
+        width: 80px;
+        margin-right: 180px;
+        height: 50px;
+        position: relative;
+        grid-column: 0 / 4;
+        grid-row: 2;
+        animation: card-movement 4s;
+        margin-bottom: 100px;
+        transform-style: preserve-3d;
+        transition: all 1s ease;   /*Transition for front and back of card */
+      }
+
+      #drawing-card:hover {
+        transform: rotateY(180deg);
+      }
+  
+
+    /*Opponents Cards, don't need to show the front of their cards */
+
+    #card5{
+      margin-right: 50px;
+      width: 80px;
+      height: 50px;
+      position: relative;
+      grid-column: 4 / 4;
+      grid-row: 2;
+      bottom: 64%;   /*Creating space from the bottom of top container */
+    }
+
+   /*Card 6 positioning */
+
+  #card6{
+    width: 80px;
+    margin-right: 170px;  /*Creating space from the right card */
+    height: 50px;
+    position: relative;
+    grid-column: 3 / 4;
+    grid-row: 2;
+    bottom: 64%;
+    transform-style: preserve-3d;
+    transition: all 1s ease;    /*Transition for front and back of card */
+  }
+
+   /*Card 7 positioning */
+  #card7{
+  width: 80px;
+  margin-left: 60px;  /*Creating space from the left card */
+  height: 50px;
+  position: relative;
+  grid-column: 2 / 4;
+  grid-row: 2;
+  bottom: 64%;
+  transform-style: preserve-3d;
+  transition: all 1s ease;      /*Transition for front and back of card */
+  }
+
+  /*Card 7 positioning */
+
+
+  /*Card 8 positioning */
+
+  #card8{
+    width: 80px;
+    margin-left: 130px;  /*Creating space from the left side*/
+    height: 50px;
+    position: relative;
+    grid-column: 1 / 4;
+    grid-row: 2;
+    bottom: 64%;
+    transform-style: preserve-3d;
+    transition: all 1s ease;   /*Transition for front and back of card */
+    }
+
+
+
+
+
+  /* This is for the front of the card */
+  .front{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden; /*Controls the reverse side of div */
+  }
+
+  /*This is for the back of the card */
+  .back{
+    border-style: solid;
+    position: absolute;
+    backface-visibility: hidden; /*Controls the reverse side of div */
+    transform: rotateY(180deg); /* Rotates the card from front to back */
+  }
+
+  @keyframes card-movement {
+
+    /* At 0%, translate the image to the left side and splace  a small skew animation */
+    0%{
+        transform: skewX(53deg) translateX(-500px) translateY(500px);  /*Translate Y is an important aspect in drawing a card */
+    }
+
+    /* At 50%, translate the image by 100px to the right */
+
+    50%{
+        transform: translateX(100px);
+    }
+
+    /* At 100%, skew the card image back to its normal state */
+    100%{
+        transform: skew(0deg) translateX(1px);
+        
+    }
+  } 
+  @keyframes text-fade-in{
+
+    /*Opacity will be used for transparency */
+
+    0%,100% {opacity: 0;}
+    50% {opacity: 1; }  /*Used for text to fade in */
+  }
+
+  /*Text Display*/
+  
+  .screen-text{
+    text-align: right;
+    color: white;
+    opacity: 0;  /*Used to fade out text in the end */
+    animation: text-fade-in 3s linear;
+  }
+  
+      /*Images are here */
+    .back-img{
+        width: 175px;
+        height: 175px;
+    }
+    .ace{
+        width: 175px;
+        height: 175px;  
+    }
+
+    .king{
+        width: 175px;
+        height: 175px;  
+    }
+    .ten-diamonds{
+        width: 175px;
+        height: 175px;  
+    }
+
+    .opponent-text{
+    font-size: 30px;
+    color: whitesmoke;
+
+    }
+    .opponent-img{
+    width: 50px;
+    height: 50px;
+    margin-left: 250px;
+    }
+    #draw-btn{
+    font-size: larger;
+    text-align: center;
+
+    }
